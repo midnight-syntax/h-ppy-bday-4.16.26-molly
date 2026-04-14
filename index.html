@@ -17,7 +17,7 @@
   min-height: 100vh;
   font-family: Georgia, serif;
 background:
-  linear-gradient(rgba(15,16,33,0.22), rgba(44,26,77,0.28)),
+  linear-gradient(rgba(15,16,33,0.10), rgba(44,26,77,0.12)),
   url("photo.jpg") center top / cover no-repeat;
   color: white;
   overflow-x: hidden;
@@ -27,7 +27,13 @@ background:
   justify-content: center;
   padding: 24px;
 }
-
+@media (max-width: 768px) {
+  body {
+    background:
+      linear-gradient(rgba(15,16,33,0.12), rgba(44,26,77,0.16)),
+      url("photo.jpg") center top / cover no-repeat;
+  }
+}
     .stars, .confetti {
       position: fixed;
       inset: 0;
