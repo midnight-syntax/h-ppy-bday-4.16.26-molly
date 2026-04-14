@@ -5,45 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HAPPY BIRTHDAYYYYY</title>
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
-  background-image: url("photo.jpg");
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  margin: 0;
-  min-height: 100vh;
-  font-family: Georgia, serif;
-background:
-  linear-gradient(rgba(15,16,33,0.10), rgba(44,26,77,0.12)),
-  url("photo.jpg") center top / cover no-repeat;
-  color: white;
-  overflow-x: hidden;
-  overflow-y: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-}
-@media (max-width: 768px) {
-  body {
-    background:
-      linear-gradient(rgba(15,16,33,0.12), rgba(44,26,77,0.16)),
-      url("photo.jpg") center top / cover no-repeat;
-  }
-}
-    .stars, .confetti {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, serif;
+      color: white;
+      overflow-x: hidden;
+      overflow-y: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+
+      background:
+        linear-gradient(rgba(15,16,33,0.08), rgba(44,26,77,0.10)),
+        url("photo.jpg") center top / cover no-repeat;
+      background-attachment: fixed;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        align-items: flex-start;
+        padding: 20px 14px;
+        background:
+          linear-gradient(rgba(15,16,33,0.05), rgba(44,26,77,0.07)),
+          url("photo.jpg") center top / cover no-repeat;
+        background-attachment: scroll;
+      }
+    }
+
+    .stars,
+    .confetti {
       position: fixed;
       inset: 0;
       pointer-events: none;
       overflow: hidden;
+      z-index: 0;
     }
 
-    .star, .piece {
+    .star,
+    .piece {
       position: absolute;
-      border-radius: 50%;
       opacity: 0.8;
       animation: float linear infinite;
     }
@@ -51,6 +57,7 @@ background:
     .star {
       width: 3px;
       height: 3px;
+      border-radius: 50%;
       background: white;
       box-shadow: 0 0 8px white;
     }
@@ -63,36 +70,52 @@ background:
     }
 
     @keyframes float {
-      from { transform: translateY(0px); opacity: 0.2; }
-      50% { opacity: 1; }
-      to { transform: translateY(-30px); opacity: 0.2; }
+      from {
+        transform: translateY(0px);
+        opacity: 0.2;
+      }
+      50% {
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-30px);
+        opacity: 0.2;
+      }
     }
 
     @keyframes fall {
-      from { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
-      to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+      from {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
     }
 
     .card {
       position: relative;
+      z-index: 2;
+      width: 100%;
       max-width: 650px;
       margin: 100px auto 40px;
-      width: 100%;
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.18);
-      backdrop-filter: blur(12px);
-      border-radius: 28px;
       padding: 40px 30px;
       text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-      z-index: 2;
+      border-radius: 28px;
+
+      background: rgba(20, 18, 36, 0.18);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.22);
     }
 
     .eyebrow {
       letter-spacing: 0.18em;
       text-transform: uppercase;
       font-size: 12px;
-      opacity: 0.8;
+      opacity: 0.82;
       margin-bottom: 18px;
     }
 
@@ -100,6 +123,7 @@ background:
       font-size: clamp(2.5rem, 7vw, 4.8rem);
       line-height: 0.95;
       margin: 0 0 16px;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.22);
     }
 
     .name {
@@ -112,7 +136,8 @@ background:
       line-height: 1.6;
       max-width: 560px;
       margin: 0 auto 26px;
-      opacity: 0.95;
+      opacity: 0.96;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.16);
     }
 
     .message {
@@ -120,10 +145,13 @@ background:
       margin-top: 26px;
       padding: 22px;
       border-radius: 20px;
-      background: rgba(255,255,255,0.08);
+      background: rgba(14, 12, 26, 0.16);
+      border: 1px solid rgba(255,255,255,0.10);
       text-align: left;
       line-height: 1.75;
       font-size: 1.02rem;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
     }
 
     .message.show {
@@ -132,8 +160,14 @@ background:
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .buttons {
@@ -144,7 +178,8 @@ background:
       margin-top: 10px;
     }
 
-    button, a.button-link {
+    button,
+    a.button-link {
       appearance: none;
       border: none;
       cursor: pointer;
@@ -156,7 +191,8 @@ background:
       transition: transform 0.18s ease, opacity 0.18s ease;
     }
 
-    button:hover, a.button-link:hover {
+    button:hover,
+    a.button-link:hover {
       transform: translateY(-2px);
       opacity: 0.96;
     }
@@ -175,11 +211,40 @@ background:
     .footer-note {
       margin-top: 22px;
       font-size: 0.92rem;
-      opacity: 0.7;
+      opacity: 0.72;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.18);
     }
 
     .hidden {
       display: none;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        margin: 24px auto 20px;
+        padding: 28px 18px;
+        border-radius: 22px;
+        background: rgba(20, 18, 36, 0.08);
+        border: 1px solid rgba(255,255,255,0.10);
+        box-shadow: none;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+
+      .message {
+        background: rgba(14, 12, 26, 0.08);
+        border: 1px solid rgba(255,255,255,0.08);
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+
+      h1 {
+        font-size: clamp(2.3rem, 12vw, 4rem);
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -190,31 +255,33 @@ background:
   <main class="card">
     <div class="eyebrow">A birthday card made just for you</div>
     <h1>Happy Birthday,<br><span class="name">Molly!!!</span>🌸</h1>
+
     <p class="subtitle">
-     Here's a magical birthday card for a magical friend!
+      Here's a magical birthday card for a magical friend!
       <br>
-  
     </p>
-<audio id="birthdaySong" preload="auto">
-  <source src="song.mp3" type="audio/mpeg">
-</audio>
- <div class="buttons">
-  <button class="primary" onclick="openMessage()">Open your note</button>
-</div>
+
+    <audio id="birthdaySong" preload="auto">
+      <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="buttons">
+      <button class="primary" onclick="openMessage()">Open your note</button>
+    </div>
 
     <section id="message" class="message">
       <p>Dear Molly,</p>
       <p>
-        Happy birthday!!! Cheers to your last and next journey around the sun! I hope this upcoming year brings you the most abundance and adventure yet! Hope you can celebrate your special day with lots of Link cuddles, a good novel, and doing whatever brings your heart the most contentment! I'm so grateful for our friendship and reconneting in the last year.  
+        Happy birthday!!! Cheers to your last and next journey around the sun! I hope this upcoming year brings you the most abundance and adventure yet! Hope you can celebrate your special day with lots of Link cuddles, a good novel, and doing whatever brings your heart the most contentment! I'm so grateful for our friendship and reconneting in the last year.
       </p>
       <p>
         Love,<br>
-        Carolyn 
+        Carolyn
       </p>
     </section>
 
     <div class="footer-note">
-      made with love, insanity, & a tiny bit of code
+      made with love, insanity, &amp; a tiny bit of code
     </div>
   </main>
 
@@ -256,16 +323,15 @@ background:
     }
 
     function openMessage() {
-  document.getElementById("message").classList.add("show");
-  burstConfetti();
+      document.getElementById("message").classList.add("show");
+      burstConfetti();
 
-  const song = document.getElementById("birthdaySong");
-
-  song.currentTime = 48; // 👈 start at 48 seconds
-  song.play().catch(() => {
-    console.log("Autoplay blocked");
-  });
-}
+      const song = document.getElementById("birthdaySong");
+      song.currentTime = 48;
+      song.play().catch(() => {
+        console.log("Autoplay blocked");
+      });
+    }
 
     createStars();
   </script>
